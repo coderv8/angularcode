@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script src="E:\AngularJS\angular.js"></script>
+        <script src="E:\AngularJS\script1.js"></script>
+    </head>
+    <body ng-app="myApp">
+        <div ng-controller="showMessageController">
+                <h1>Welcome, User!</h1>
+                <b>{{message}}</b> <br/>
+                working as {{biodata.Designation}} <br/>
+                at {{biodata.Company}} for around {{biodata.Experience}}
+        </div>
+        <div ng-controller="emojiController">
+            <!-- <div ng-repeat="data in datas"> -->
+                <img ng-src="{{data}}"/>
+            <!-- </div> -->
+        </div>
+    </body>
+</html>
