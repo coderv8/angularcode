@@ -52,12 +52,30 @@ angularScope.controller("showMessageController", function($scope) {
     }
 });
 
-angularScope.controller("emojiController", function($scope, $http) {
+angularScope.controller("emojiController", function($scope, $http,$timeout) {
+var currIndex=0;
+function callAtTimeout(dataa){
+$scope.currData=dataa;
+if($scope.datalength>=currIndex)
+{
+$timeout(callAtTimeout, 3000,true,$scope.dataas[currIndex]);
+currIndex++;
+}
+else
+{
+currIndex=0;
+$timeout(callAtTimeout, 3000,true,$scope.dataas[currIndex]);
+}
+}
+
+$scope.dataas=[];
     $http.get("https://api.github.com/emojis").then(
         function(response){
             for(var item in response.data){
-                $scope.data = response.data[item];  
+                $scope.dataas.push(response.data[item]);  
             }
+$scope.datalength=$scope.dataas.length;
+callAtTimeout($scope.dataas[0]);
             //$scope.datas = response.data;
         },
         function(response){
